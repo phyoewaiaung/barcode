@@ -15,7 +15,7 @@ const BarcodeDetail = (props) => {
             <div className='nested-responsive-barcode'>
                 <img src='/images/barcode.jpg' alt="barcode" width={80} height={70}/>
                 <div className='pt-3 ms-4'>
-                    <h5>{barcodeFormat.toUpperCase()}</h5>
+                    <h5>{barcodeFormat.replace(/_/g, "-").toUpperCase()}</h5>
                     <p className='grey'>{lastBarcodeData}</p>
                 </div>
             </div>

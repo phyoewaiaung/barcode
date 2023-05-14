@@ -3,7 +3,7 @@ import { createStore } from 'redux'
 const initialState = {
     barcodeFormat: "",
     lastBarcodeData: "",
-    playSound: false
+    playSound: false,
 }
 
 const changeState = (state = initialState, { type, ...rest }) => {

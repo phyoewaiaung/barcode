@@ -51,12 +51,6 @@ body {
   cursor: pointer;
 }
 
-#barcode-highlight {
-  position: absolute;
-  border: 2px solid red;
-  pointer-events: none; /* Ensure the highlight does not interfere with scanning */
-}
-
 @media (max-width:280px) {
   .responsive-barcode{
     display: block !important;

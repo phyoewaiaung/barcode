@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Quagga from 'quagga';
 
 const BarcodeScannerIndex = () => {
@@ -30,10 +30,6 @@ const BarcodeScannerIndex = () => {
               type: 'LiveStream',
               target: videoRef.current,
             },
-            locator: {
-                patchSize: 'medium',
-                halfSample: true,
-            },
             decoder: {
               readers: ['ean_reader', 'ean_8_reader', 'upc_reader', 'upc_e_reader'],
             },
@@ -47,10 +43,18 @@ const BarcodeScannerIndex = () => {
       
           Quagga.onDetected((result) => {
             hightlight(result.box);
-            dispatch({type: 'set',barcodeFormat:result.codeResult.format, lastBarcodeData: result.codeResult.code, playSound: true})
+            dispatch({
+              type: 'set',
+              barcodeFormat:result.codeResult.format, 
+              lastBarcodeData: result.codeResult.code, 
+              playSound: true,
+            })
+
+            // remove sound after 800ms
             setTimeout(()=> {
-                dispatch({type: 'set', playSound:false})
+                dispatch({type: 'set', playSound: false})
             },800)
+
           });
          
           return () => {
@@ -60,19 +64,24 @@ const BarcodeScannerIndex = () => {
   }, [dispatch, cameraAccess]);
 
   const hightlight = (box) => {
+    const videoRect = videoRef.current.getBoundingClientRect();
+
     const minX = Math.min(box[0][0], box[1][0], box[2][0], box[3][0]);
     const minY = Math.min(box[0][1], box[1][1], box[2][1], box[3][1]);
     const maxX = Math.max(box[0][0], box[1][0], box[2][0], box[3][0]);
     const maxY = Math.max(box[0][1], box[1][1], box[2][1], box[3][1]);
 
     const rectWidth = maxX - minX;
-    const rectHeight = maxY - minY
+    const rectHeight = maxY - minY;
+
+    const scaleX = videoRect.width / videoRef.current.videoWidth;
+    const scaleY = videoRect.height / videoRef.current.videoHeight;
 
     setHighlightStyle({
-      top: `${minY}px`,
-      left: `${minX}px`,
-      width: `${rectWidth}px`,
-      height: `${rectHeight}px`,
+      top: `${minY * scaleY}px`,
+      left: `${minX * scaleX}px`,
+      width: `${rectWidth * scaleX}px`,
+      height: `${rectHeight * scaleY}px`,
     });
   }
 
@@ -81,12 +90,12 @@ const BarcodeScannerIndex = () => {
         <video ref={videoRef} autoPlay playsInline className="video" />
         <div id='highlight'
          style={{
-          position: 'absolute',
-          backgroundColor:'#fff',
-          opacity:'0.7',
-          border:'2px solid #fff',
-          ...highlightStyle,
-        }}
+            position: 'absolute',
+            backgroundColor:'#fff',
+            opacity: '0.7',
+            border:'2px solid #fff',
+            ...highlightStyle,
+          }}
         ></div>
     </div>
   );

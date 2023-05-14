@@ -11,7 +11,7 @@ const BarcodeScannerIndex = () => {
   useEffect(() => {
     const requestCameraPermission = async () => {
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        const stream = await navigator.mediaDevices.getUserMedia({ video:  { facingMode: 'environment' } });
         videoRef.current.srcObject = stream;
         setCameraAccess(true);
       } catch (error) {

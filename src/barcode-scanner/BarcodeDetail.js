@@ -9,14 +9,14 @@ const BarcodeDetail = (props) => {
        <div className='barcode-panel'>
         <div className='d-flex justify-content-between'>
             <p className='font-weight-bold'>1 item</p>
-            <p className='cursor-style' onClick={clearClick}>Clear</p>
+            <p className='cursor-style grey' onClick={clearClick}>Clear</p>
         </div>
         <div className='responsive-barcode'>
             <div className='nested-responsive-barcode'>
                 <img src='/images/barcode.jpg' alt="barcode" width={80} height={70}/>
-                <div className='pt-3 ms-3'>
+                <div className='pt-3 ms-4'>
                     <h5>{barcodeFormat.toUpperCase()}</h5>
-                    <p>{lastBarcodeData}</p>
+                    <p className='grey'>{lastBarcodeData}</p>
                 </div>
             </div>
             <img src='/images/search.png' width={55} height={55} alt='search'/>

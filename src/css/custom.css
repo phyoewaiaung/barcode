@@ -43,6 +43,10 @@ body {
   font-weight: bold;
 }
 
+.grey{
+  color: #808080;
+}
+
 .cursor-style{
   cursor: pointer;
 }

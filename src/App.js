@@ -1,5 +1,5 @@
-import BarcodeScannerIndex from "./barcode-scanner/BarcodeScannerIndex"
-import BarcodeDetail from "./barcode-scanner/BarcodeDetail"
+import BarcodeScannerIndex from "./views/barcode-scanner/BarcodeScannerIndex"
+import BarcodeDetail from "./views/barcode-scanner/BarcodeDetail"
 import { useDispatch, useSelector } from "react-redux"
 const App = () => {
   const lastBarcodeData = useSelector(state => state.lastBarcodeData);
@@ -9,6 +9,7 @@ const App = () => {
   const clearClick = () =>(
     dispatch({type: 'set',barcodeFormat:"", lastBarcodeData:"", playSound:false})
   )
+  
   return(
     <>
       <BarcodeScannerIndex />

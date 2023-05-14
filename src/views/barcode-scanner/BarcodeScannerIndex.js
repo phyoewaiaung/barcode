@@ -43,6 +43,7 @@ const BarcodeScannerIndex = () => {
       
           Quagga.onDetected((result) => {
             hightlight(result.box);
+            
             dispatch({
               type: 'set',
               barcodeFormat:result.codeResult.format, 

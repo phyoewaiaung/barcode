@@ -92,9 +92,9 @@ const BarcodeScannerIndex = () => {
         <div id='highlight'
          style={{
             position: 'absolute',
-            backgroundColor:'#fff',
-            opacity: '0.7',
-            border:'2px solid #fff',
+            backgroundColor:'#dcdcdc',
+            opacity: '0.8',
+            border:'2px solid rgb(251, 248, 247)',
             ...highlightStyle,
           }}
         ></div>

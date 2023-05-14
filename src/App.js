@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import BarcodeScannerIndex from "./barcode-scanner/BarcodeScannerIndex"
+import BarcodeDetail from "./barcode-scanner/BarcodeDetail"
+import { useDispatch, useSelector } from "react-redux"
+const App = () => {
+  const lastBarcodeData = useSelector(state => state.lastBarcodeData);
+  const playSound = useSelector(state => state.playSound);
+  const dispatch = useDispatch();
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const clearClick = () =>(
+    dispatch({type: 'set',barcodeFormat:"", lastBarcodeData:"", playSound:false})
+  )
+  return(
+    <>
+      <BarcodeScannerIndex />
+      {lastBarcodeData !== "" &&
+        <BarcodeDetail clearClick={clearClick}/>
+      }
+      {playSound === true &&
+        <audio src='/audio/scanner-sound.mp3' controls autoPlay />
+      }
+    </>
+  )
 }
 
-export default App;
+export default App

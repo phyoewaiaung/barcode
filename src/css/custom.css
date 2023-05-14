@@ -1,0 +1,66 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.barcode-scanner {
+  height: 100vh;
+  position: relative;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.barcode-panel{
+  position: absolute;
+  background-color: #fff;
+  border-radius: 20px 20px 0 0;
+  padding: 15px 20px 20px 20px;
+  width: 100%;
+  bottom: -14px;
+  margin-right: -6px;
+}
+
+.responsive-barcode{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: -6px;
+}
+
+.nested-responsive-barcode{
+  display: flex;
+  align-items: center;
+}
+
+.font-weight-bold{
+  font-weight: bold;
+}
+
+.cursor-style{
+  cursor: pointer;
+}
+
+#barcode-highlight {
+  position: absolute;
+  border: 2px solid red;
+  pointer-events: none; /* Ensure the highlight does not interfere with scanning */
+}
+
+@media (max-width:280px) {
+  .responsive-barcode{
+    display: block !important;
+  }
+}
+
+@media (max-width:230px) {
+  .nested-responsive-barcode{
+    display: block;
+  }
+}

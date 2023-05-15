@@ -78,16 +78,11 @@ const BarcodeScannerIndex = () => {
     const scaleX = videoRect.width / videoRef.current.videoWidth;
     const scaleY = videoRect.height / videoRef.current.videoHeight;
 
-    const adjustedMinX = Math.max(minX - rectWidth * 0.1, 0); // Adjusting minX by 10% of the barcode width
-    const adjustedMinY = Math.max(minY - rectHeight * 0.1, 0); // Adjusting minY by 10% of the barcode height
-    const adjustedWidth = rectWidth * 1.2; // Increasing the width by 20%
-    const adjustedHeight = rectHeight * 1.2; // Increasing the height by 20%
-
     setHighlightStyle({
-      top: `${adjustedMinY * scaleY}px`,
-      left: `${adjustedMinX * scaleX}px`,
-      width: `${adjustedWidth * scaleX}px`,
-      height: `${adjustedHeight * scaleY}px`,
+      top: `${minY * scaleY}px`,
+      left: `${minX * scaleX}px`,
+      width: `${rectWidth * scaleX}px`,
+      height: `${rectHeight * scaleY}px`,
     });
   }
 

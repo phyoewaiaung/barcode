@@ -51,6 +51,14 @@ body {
   cursor: pointer;
 }
 
+.no-camera-access{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 @media (max-width:280px) {
   .responsive-barcode{
     display: block !important;

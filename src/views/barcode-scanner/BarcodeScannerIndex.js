@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Quagga from 'quagga';
 
 const BarcodeScannerIndex = () => {
   const dispatch = useDispatch();
-  const [cameraAccess, setCameraAccess] = useState(false); // check camera permission
+  const cameraAccess = useSelector(state => state.cameraAccess);
   const [highlightStyle, setHighlightStyle] = useState({}); // for detected barcode style
   const videoRef = useRef(null);
 
@@ -13,14 +13,14 @@ const BarcodeScannerIndex = () => {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({ video:  { facingMode: 'environment' } });
         videoRef.current.srcObject = stream;
-        setCameraAccess(true);
+        dispatch({type: 'set', cameraAccess: true});
       } catch (error) {
-        console.error('Error accessing camera:', error);
+        dispatch({type: 'set', cameraAccess: false});
       }
     };
 
     requestCameraPermission();
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (cameraAccess) {
@@ -67,6 +67,7 @@ const BarcodeScannerIndex = () => {
   const hightlight = (box) => {
     const videoRect = videoRef.current.getBoundingClientRect();
 
+    //get the position of scanned barcode's position
     const minX = Math.min(box[0][0], box[1][0], box[2][0], box[3][0]);
     const minY = Math.min(box[0][1], box[1][1], box[2][1], box[3][1]);
     const maxX = Math.max(box[0][0], box[1][0], box[2][0], box[3][0]);

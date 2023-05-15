@@ -87,18 +87,18 @@ const BarcodeScannerIndex = () => {
   }
 
   return (
-    <div className="barcode-scanner">
-        <video ref={videoRef} autoPlay playsInline className="video" />
-        <div id='highlight'
-         style={{
-            position: 'absolute',
-            backgroundColor:'#dcdcdc',
-            opacity: '0.8',
-            border:'2px solid rgb(251, 248, 247)',
-            ...highlightStyle,
-          }}
-        ></div>
-    </div>
+        <>
+          <video ref={videoRef} autoPlay playsInline className="video" />
+          <div id='highlight'
+          style={{
+              position: 'absolute',
+              backgroundColor:'#dcdcdc',
+              opacity: '0.8',
+              border:'2px solid rgb(251, 248, 247)',
+              ...highlightStyle,
+            }}
+          ></div>
+        </>
   );
 };
 

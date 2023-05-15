@@ -17,7 +17,7 @@ const App = () => {
         <BarcodeDetail clearClick={clearClick}/>
       }
       {playSound === true &&
-        <audio src='/audio/scanner-sound.mp3' controls autoPlay />
+        <audio src='/audio/scanner-sound.mp3' autoPlay />
       }
     </>
   )

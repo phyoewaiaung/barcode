@@ -7,12 +7,16 @@ body {
 }
 
 .barcode-scanner {
+  width: 100%;
   height: 100vh;
   position: relative;
+  overflow: hidden;
 }
 
 .video {
   width: 100%;
+  height: 100%;
+  object-fit:cover;
 }
 
 .barcode-panel{

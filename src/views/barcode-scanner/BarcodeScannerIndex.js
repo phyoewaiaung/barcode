@@ -5,6 +5,7 @@ import Quagga from 'quagga';
 const BarcodeScannerIndex = () => {
   const dispatch = useDispatch();
   const cameraAccess = useSelector(state => state.cameraAccess);
+  const highlightStatus = useSelector(state => state.highlightStatus);
   const [highlightStyle, setHighlightStyle] = useState({}); // for detected barcode style
   const videoRef = useRef(null);
 
@@ -49,6 +50,7 @@ const BarcodeScannerIndex = () => {
               barcodeFormat:result.codeResult.format, 
               lastBarcodeData: result.codeResult.code, 
               playSound: true,
+              highlightStatus: true
             })
 
             // remove sound after 800ms
@@ -90,8 +92,9 @@ const BarcodeScannerIndex = () => {
   return (
     <div className="barcode-scanner">
         <video ref={videoRef} autoPlay playsInline className="video" />
-        <div id='highlight'
-         style={{
+        {highlightStatus &&
+          <div id='highlight'
+          style={{
             position: 'absolute',
             backgroundColor:'#dcdcdc',
             opacity: '0.8',
@@ -99,6 +102,7 @@ const BarcodeScannerIndex = () => {
             ...highlightStyle,
           }}
         ></div>
+        }
     </div>
   );
 };

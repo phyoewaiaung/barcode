@@ -4,7 +4,8 @@ const initialState = {
     barcodeFormat: "",
     lastBarcodeData: "",
     playSound: false,
-    cameraAccess: true
+    cameraAccess: true,
+    highlightStatus: false
 }
 
 const changeState = (state = initialState, { type, ...rest }) => {

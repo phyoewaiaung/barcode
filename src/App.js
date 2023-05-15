@@ -9,7 +9,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   const clearClick = () =>(
-    dispatch({type: 'set',barcodeFormat:"", lastBarcodeData:"", playSound:false})
+    dispatch({type: 'set',barcodeFormat:"", lastBarcodeData:"", playSound:false, highlightStatus: false})
   )
   
   return(

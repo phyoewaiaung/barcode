@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Quagga from 'quagga';
+import Quagga from '@ericblade/quagga2';
 
 const BarcodeScannerIndex = () => {
   const dispatch = useDispatch();

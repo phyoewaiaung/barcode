@@ -14,7 +14,7 @@ const App = () => {
   
   return(
     <>
-      {cameraAccess === true &&
+      {cameraAccess === true &&  
         <>
           <BarcodeScannerIndex />
           {lastBarcodeData !== "" &&

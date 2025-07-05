@@ -19,6 +19,7 @@ const App = () => {
       dispatch(setScanning(true));
       // Mock code detection after 3 seconds
       setTimeout(() => {
+        
         const mockCodes = [
           { data: 'https://example.com', format: 'qr_code', type: 'url' },
           { data: 'Hello, World!', format: 'qr_code', type: 'text' },
@@ -26,7 +27,7 @@ const App = () => {
           { data: 'mailto:test@example.com', format: 'qr_code', type: 'email' },
         ];
         const randomCode = mockCodes[Math.floor(Math.random() * mockCodes.length)];
-        
+
         setMockCode(randomCode); 
         dispatch(setScanning(false));
       }, 3000);

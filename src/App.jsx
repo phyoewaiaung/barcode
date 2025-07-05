@@ -26,7 +26,8 @@ const App = () => {
           { data: 'mailto:test@example.com', format: 'qr_code', type: 'email' },
         ];
         const randomCode = mockCodes[Math.floor(Math.random() * mockCodes.length)];
-        setMockCode(randomCode);
+        
+        setMockCode(randomCode); 
         dispatch(setScanning(false));
       }, 3000);
     } else {

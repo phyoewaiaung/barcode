@@ -5,6 +5,8 @@ import { History, Pause, Play, RotateCcw, Settings, Zap, ZapOff } from "lucide-r
 import CodeDetail from "./components/results/CodeDetail";
 import HistoryPanel from "./components/results/HistoryPanel";
 import SettingsPanel from "./components/settings/SettingsPanel";
+import { clearCurrentCode, setScanning, toggleCamera, toggleFlashlight } from "./store/scannerSlice";
+import { toggleHistory, toggleSettings } from "./store/historySlice";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -47,7 +49,9 @@ const App = () => {
   return (
     <div className="relative w-full h-screen bg-gray-900 overflow-hidden">
       {/* Camera View */}
-      <CameraView />
+      <div className="w-[200px] h-[100px]">
+        <CameraView />
+      </div>
 
       {/* Error Display */}
       {error && (
